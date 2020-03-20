@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="Shift_jis" ?>
+
+<plugin>
+
+<!-- プラグインID -->
+<!-- 手順１で決めたプラグインIDを記述します -->
+<id>newplugin</id>
+
+<!-- 名称 -->
+<!-- プラグインの名称を記述します -->
+<name>予定表</name>
+
+<!-- 説明 -->
+<!-- プラグインの説明を記述します -->
+<description>新しいプラグインです。</description>
+
+
+
+
+<!-- トップメニューの情報を記述する 記述しない場合はメニューに表示しない -->
+<topmenu-info>
+<!-- メニューへの表示/非表示 -->
+<!-- プラグインをメニューへ表示する場合は「true」と記述します -->
+<view>true</view>
+<!-- メニューアイコンクリック時にフレーム内に表示するURLを記述します -->
+<!-- struts_config.xmlのactionのpathの値を元に、下記の様に記述 -->
+<url>../newplugin/helloworld.do</url>
+</topmenu-info>
+
+<!-- ヘルプ情報を設定する。 -->
+<help-info>
+<!-- ヘルプの表示/非表示 -->
+<view>false</view>
+</help-info>
+
+</plugin>
