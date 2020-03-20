@@ -624,7 +624,6 @@ import java.util.Map;
 		        			String stmp=gsl.get(jj).replaceAll(" ","").replaceAll("　","").trim();
 			        		 if (stmp.length()>0) {
 			        				 gyo=gyo+"<b><span style=font-size:80%;>["+tmpDi.shinf.retumeiLst.get(jj)+"]</span></b><span style=font-size:80%;>"+gsl.get(jj).replaceAll("\n","<br>").trim()+"</span><br>";
-
 			        		 }
 
 		        		}catch(Exception e4) {
