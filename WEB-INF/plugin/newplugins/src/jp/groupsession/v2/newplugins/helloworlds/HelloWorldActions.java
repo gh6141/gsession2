@@ -584,10 +584,12 @@ import java.util.Map;
 				String dtx=dtinf.get(ix).gappi;
 				//System.out.println("gyo568:dtx="+dtx);
 			    if(map.containsKey(dtx)) {
+			    	dtinf.get(ix).chohuku="<span title=\"この日付は複数シートにデータがあります\">*</span>";//重複ある時は*
+			    	map.get(dtx).chohuku="<span title=\"この日付は複数シートにデータがあります\">*</span>";
 			    	//System.out.println("gyo573:dtinf_yusendo="+dtinf.get(ix).shinf.yusendo+"<> map.yusendo="+map.get(dtx).shinf.yusendo);
 			    	if(dtinf.get(ix).shinf.yusendo>map.get(dtx).shinf.yusendo) { //優先度高いものであれば、入れ替える
-			    		map.remove(dtx);
-			    		dtinf.get(ix).chohuku="*";// dtinf.get(ix).shinf.sheetbango+"を優先表示)";//重複ある時は*
+			    		map.remove(dtx);// dtinf.get(ix).shinf.sheetbango+"を優先表示)";
+
 			    		map.put(dtx,dtinf.get(ix));
 			    		//System.out.println("gyo574:chohuku="+dtinf.get(ix).chohuku);
 			    	}
