@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="Shift_jis" ?>
+
+<plugin>
+
+<!-- プラグインID -->
+<!-- 手順１で決めたプラグインIDを記述します -->
+<id>newplugins</id>
+
+<!-- 名称 -->
+<!-- プラグインの名称を記述します -->
+<name>明日以降の予定</name>
+
+<!-- 説明 -->
+<!-- プラグインの説明を記述します -->
+<description>新しいプラグインです。</description>
+
+   <!-- メイン画面表示 メイン画面に表示する情報を記述する  -->
+    <mainscreen-info>
+      <!-- メイン画面への表示/非表示 -->
+      <view>true</view>
+      <!-- メイン画面へ表示する画面のID -->
+      <id>helloworlds</id>
+      <!-- メイン画面表示位置の設定 左=1 右=2 -->
+      <position>2</position>
+      <!-- メイン画面表示順の設定 -->
+      <order>1</order>
+    </mainscreen-info>
+
+
+<!-- トップメニューの情報を記述する 記述しない場合はメニューに表示しない -->
+<topmenu-info>
+<!-- メニューへの表示/非表示 -->
+<!-- プラグインをメニューへ表示する場合は「true」と記述します -->
+<view>true</view>
+<!-- メニューアイコンクリック時にフレーム内に表示するURLを記述します -->
+<!-- struts_config.xmlのactionのpathの値を元に、下記の様に記述 -->
+<url>../newplugins/helloworlds.do</url>
+</topmenu-info>
+
+<!-- ヘルプ情報を設定する。 -->
+<help-info>
+<!-- ヘルプの表示/非表示 -->
+<view>false</view>
+</help-info>
+
+</plugin>

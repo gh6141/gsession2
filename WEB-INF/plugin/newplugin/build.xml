@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+====================================================
+GroupSession newplugin
+共通クラスのビルドが完了していること
+create JTS
+====================================================
+-->
+
+<project name="GroupSession newplugin" default="build" basedir=".">
+<!--
+====================================================
+Properties: 変数の定義
+====================================================
+-->
+
+<!-- ディレクトリ名の定義 -->
+<property name="SRC.DIR" value="./src" />
+<property name="PLGIN_CLS.DIR" value="./classes" />
+
+<!-- Compile Options -->
+<property name="BLD.TARGET" value="1.6" />
+<property name="DEBUG" value="yes" />
+<property name="DEPRECATION" value="true" />
+<property name="SRC.ENC" value="UTF-8" />
+
+<!-- ClassPath -->
+<path id="app_classpath">
+
+<!-- OSのクラスパス -->
+<pathelement path="${classpath}" />
+
+<!-- LIBディレクトリ -->
+<!-- アプリケーション共通lib -->
+<fileset dir="../../../../../../7/lib">
+<include name="**/*.jar"/>
+<include name="**/*.zip"/>
+</fileset>
+<fileset dir="../../../WEB-INF/lib">
+<include name="**/*.jar"/>
+<include name="**/*.zip"/>
+</fileset>
+<!-- アプリケーション 共通クラス -->
+<pathelement location="../../../WEB-INF/classes" />
+</path>
+
+<!--
+====================================================
+INIT: 初期化
+====================================================
+-->
+<target name="init"
+description="init"
+>
+<tstamp>
+<format property="YMDHMS"
+pattern="yyyy.MM.dd hh:mm:ss"
+/>
+</tstamp>
+<echo message="Project Name = ${ant.project.name}" />
+<echo message="Project Root = ${basedir}" />
+<echo message="JDK Version = ${ant.java.version}" />
+<echo message="Building Time = ${YMDHMS}" />
+<echo message="" />
+</target>
+
+<!--
+====================================================
+BUILD: Classファイルの作成(コンパイル)
+====================================================
+-->
+<target name="build">
+<mkdir dir="${PLGIN_CLS.DIR}" />
+
+<javac
+classpathref = "app_classpath"
+destdir = "${PLGIN_CLS.DIR}"
+source="11"
+target = "11"
+debug = "${DEBUG}"
+deprecation = "${DEPRECATION}"
+encoding = "${SRC.ENC}">
+<src path="${SRC.DIR}" />
+<compilerarg value="-Xlint:unchecked" />
+<include name="**/*.java"/>
+</javac>
+
+</target>
+
+<!--
+====================================================
+CLEAN:作成したClassファイルをディレクトリごと削除
+====================================================
+-->
+<target name="clean">
+<antcall target="init" />
+<delete dir="${PLGIN_CLS.DIR}" />
+</target>
+</project>
