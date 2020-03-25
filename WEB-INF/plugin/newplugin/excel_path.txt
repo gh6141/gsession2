@@ -1,1 +1,1 @@
-\\\\192.168.1.1\\HomeIct\\yotei2.xlsx
+\\\\172.16.125.87\\gsession_data\\setuyotei2.xlsx
