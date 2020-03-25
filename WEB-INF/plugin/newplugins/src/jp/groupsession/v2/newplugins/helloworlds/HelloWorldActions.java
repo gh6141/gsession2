@@ -626,7 +626,9 @@ import java.util.Map;
 			        				 gyo=gyo+"<b><span style=font-size:80%;>["+tmpDi.shinf.retumeiLst.get(jj)+"]</span></b><span style=font-size:80%;>"+gsl.get(jj).replaceAll("\n","<br>").trim()+"</span><br>";
 			        		 }
 
-		        		}catch(Exception e4) {//  tuika
+
+		        		}catch(Exception e4) {
+
 
 		        		}
 
