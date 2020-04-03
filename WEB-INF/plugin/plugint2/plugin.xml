@@ -4,11 +4,11 @@
 
 <!-- プラグインID -->
 <!-- 手順１で決めたプラグインIDを記述します -->
-<id>newplugint</id>
+<id>plugint2</id>
 
 <!-- 名称 -->
 <!-- プラグインの名称を記述します -->
-<name>今日の予定(本校)</name>
+<name>今日の予定(分教室)</name>
 
 <!-- 説明 -->
 <!-- プラグインの説明を記述します -->
@@ -19,11 +19,11 @@
       <!-- メイン画面への表示/非表示 -->
       <view>true</view>
       <!-- メイン画面へ表示する画面のID -->
-      <id>helloworldt</id>
+      <id>helloworldt2</id>
       <!-- メイン画面表示位置の設定 左=1 右=2 -->
       <position>1</position>
       <!-- メイン画面表示順の設定 -->
-      <order>1</order>
+      <order>2</order>
     </mainscreen-info>
 
 
@@ -34,7 +34,7 @@
 <view>false</view>
 <!-- メニューアイコンクリック時にフレーム内に表示するURLを記述します -->
 <!-- struts_config.xmlのactionのpathの値を元に、下記の様に記述 -->
-<url>../newplugint/helloworldt.do</url>
+<url>../plugint2/helloworldt2.do</url>
 </topmenu-info>
 
 <!-- ヘルプ情報を設定する。 -->

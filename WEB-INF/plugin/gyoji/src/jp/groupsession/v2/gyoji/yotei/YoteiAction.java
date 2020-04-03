@@ -65,16 +65,20 @@ import java.text.*;
     	 YoteiForm yoteiForm = (YoteiForm)form;
 
     	String t3= yoteiForm.getText();
+    	String t3s= yoteiForm.getText_s();
         String t4= yoteiForm.getText4();
         String t5= yoteiForm.getText5();
 
          String path3="";
+         String path3s="";
          String path4k="";
          String path5="";
      	String tmp3=null;
+     	String tmp3s=null;
 
          try{
         	  path3 = this.getServlet().getServletContext().getRealPath("/WEB-INF/plugin/newplugin/excel_path.txt");
+        	  path3s = this.getServlet().getServletContext().getRealPath("/WEB-INF/plugin/newplugin/excel_path_s.txt");
         	  path4k = this.getServlet().getServletContext().getRealPath("/WEB-INF/plugin/newplugin/excel_komoku.txt");
         	  path5 = this.getServlet().getServletContext().getRealPath("/WEB-INF/plugin/newplugin/gengo.txt");
 
@@ -82,6 +86,12 @@ import java.text.*;
         		 FileWriter filewriter = new FileWriter(path3);
                  filewriter.write(t3);
                  filewriter.close();
+        	 }
+
+           	 if (t3s!=null && t3s.length()!=0){
+        		 FileWriter filewriter3s = new FileWriter(path3s);
+                 filewriter3s.write(t3s);
+                 filewriter3s.close();
         	 }
 
 
@@ -108,7 +118,7 @@ import java.text.*;
 
 
 
-    	 String str3 = null;String str4k = null;String tmp4k=null;String tmp5=null;String str5=null;
+    	 String str3 = null;String str3s=null;String str4k = null;String tmp4k=null;String tmp5=null;String str5=null;
     	 try{
 
         	 BufferedReader in3=new BufferedReader(new FileReader(path3));
@@ -116,6 +126,13 @@ import java.text.*;
         	 tmp3=str3;
         	 }
         	 in3.close();
+
+        	 BufferedReader in3s=new BufferedReader(new FileReader(path3s));
+        	 while((str3s=in3s.readLine())!=null) {
+        	 tmp3s=str3s;
+        	 }
+        	 in3s.close();
+
 
         	 BufferedReader in4k=new BufferedReader(new FileReader(path4k));
         	 while((str4k=in4k.readLine())!=null) {
@@ -134,6 +151,7 @@ import java.text.*;
 
 
           yoteiForm.setText(tmp3);
+          yoteiForm.setText_s(tmp3s);
           yoteiForm.setText4(tmp4k);
           yoteiForm.setText5(tmp5);
 

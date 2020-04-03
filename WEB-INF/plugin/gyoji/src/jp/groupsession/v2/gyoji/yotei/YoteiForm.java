@@ -33,6 +33,16 @@ public String getText() {
     return text__ ;
 }
 
+private String text_s__ ="";
+
+public void setText_s(String text) {
+    text_s__  = text;
+}
+
+public String getText_s() {
+    return text_s__ ;
+}
+
 private String text4__ ="";
 
 public void setText4(String text4) {

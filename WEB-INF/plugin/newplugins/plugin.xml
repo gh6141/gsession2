@@ -8,7 +8,7 @@
 
 <!-- 名称 -->
 <!-- プラグインの名称を記述します -->
-<name>明日以降の予定</name>
+<name>明日以降の予定(本校)</name>
 
 <!-- 説明 -->
 <!-- プラグインの説明を記述します -->
@@ -31,7 +31,7 @@
 <topmenu-info>
 <!-- メニューへの表示/非表示 -->
 <!-- プラグインをメニューへ表示する場合は「true」と記述します -->
-<view>true</view>
+<view>false</view>
 <!-- メニューアイコンクリック時にフレーム内に表示するURLを記述します -->
 <!-- struts_config.xmlのactionのpathの値を元に、下記の様に記述 -->
 <url>../newplugins/helloworlds.do</url>

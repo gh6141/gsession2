@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="shift_jis" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<!-- ========== Form Bean Definitions =============== -->
+<form-beans>
+
+<!-- typeには作成したFormクラスをパッケージ名から記述します -->
+<form-bean
+name="helloworldForm2"
+type="jp.groupsession.v2.plugin2.helloworld2.HelloWorldForm2" />
+
+</form-beans>
+
+<!-- ========== Action Mapping Definitions ============= -->
+<action-mappings>
+
+<!-- HelloWorld -->
+<!-- nameにはform-beanに記述したnameと同じ値を記述します -->
+<!-- inputには作成したJSPファイルへのパスを記述します -->
+<!-- typeには作成したActionクラスをパッケージ名から記述します -->
+<action
+name="helloworldForm2"
+path="/plugin2/helloworld2"
+scope="request"
+input="/WEB-INF/plugin/plugin2/jsp/helloworld2.jsp"
+validate="false"
+type="jp.groupsession.v2.plugin2.helloworld2.HelloWorldAction2">
+</action>
+
+</action-mappings>
+
+</struts-config>

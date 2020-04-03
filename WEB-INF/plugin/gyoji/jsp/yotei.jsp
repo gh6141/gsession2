@@ -30,8 +30,10 @@
 　　　<html:submit property="submit" value="更新" />
 <br>
 〇行事予定のエクセルファイルのパス<br>
-　<html:text property="text" size="80"  /><br>
-　※予定表のエクセルファイルの場所（パス）を入れてください。￥などの記号は￥￥（実際は半角の円記号）のように２重にしてください。
+　(1)<html:text property="text" size="80"  /><br>
+　(2)<html:text property="text_s" size="80"  /><br>
+　※予定表のエクセルファイルの場所（パス）を入れてください。￥などの記号は￥￥（実際は半角の円記号）のように２重にしてください。２つまで登録可。
+
 <br><br>
 〇月予定の場合<br>
 　行事予定の項目名<br>
