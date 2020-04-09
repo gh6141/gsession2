@@ -1,0 +1,129 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+
+<gsmsg:define id="title" msgkey="cmn.title" />
+<gsmsg:define id="nitiji" msgkey="cmn.date" />
+<gsmsg:define id="hassinsya" msgkey="cir.2" />
+  <bean:define id="cir010sortKey" name="cir010Form" property="cir010sortKey" type="java.lang.Integer" />
+  <bean:define id="cir010orderKey" name="cir010Form" property="cir010orderKey" type="java.lang.Integer" />
+
+<%
+String sortSign = "";
+String nextOrder = "";
+  int[] sortKeyList = new int[] {
+                       jp.groupsession.v2.cir.GSConstCircular.SORT_TITLE,
+                       jp.groupsession.v2.cir.GSConstCircular.SORT_DATE,
+                       jp.groupsession.v2.cir.GSConstCircular.SORT_USER
+                       };
+  String[] widthList = new String[] { "61", "18", "18"};
+  String[] titleList = new String[] {
+          title,
+          nitiji,
+          hassinsya
+                       };
+%>
+<table class="tl0 table_td_border2" width="100%" cellpadding="5" cellspacing="0">
+    <tr>
+
+    <!-- 表タイトル -->
+    <!-- 全選択・全解除チェックボックス -->
+    <th width="3%" class="detail_tbl"><input type="checkbox" name="allChk" onClick="changeChk();"></th>
+
+<%
+      for (int titleIdx = 0; titleIdx < titleList.length; titleIdx++) {
+        if (cir010sortKey.intValue() == sortKeyList[titleIdx]) {
+            if (cir010orderKey.intValue() == 1) {
+                sortSign = "▼";
+                nextOrder = "0";
+            } else {
+                sortSign = "▲";
+                nextOrder = "1";
+            }
+        } else {
+            nextOrder = "0";
+            sortSign = "";
+        }
+        %>
+        <th width="<%=widthList[titleIdx]%>%" class="detail_tbl">
+          <a href="#" onClick="clickTitle(<%=String.valueOf(sortKeyList[titleIdx])%>, <%= nextOrder %>);" > <span class="text_base3"><%=titleList[titleIdx]%><%=sortSign%></span>
+          </a>
+        </th>
+        <%
+    }
+%>
+    </tr>
+
+
+  <!-- 表BODY -->
+  <logic:notEmpty name="cir010Form" property="cir010CircularList" scope="request">
+  <logic:iterate id="cirMdl" name="cir010Form" property="cir010CircularList" scope="request" indexId="idx">
+
+<%
+  String font = "";
+  String titleFont = "";
+  String sojuStr = "";
+%>
+
+  <logic:equal name="cirMdl" property="cvwConf" value="<%= unopen %>">
+<%
+  font = "sc_ttl_sat";
+  titleFont = "text_link";
+%>
+  </logic:equal>
+
+  <logic:notEqual name="cirMdl" property="cvwConf" value="<%= unopen %>">
+<%
+  font = "text_p";
+  titleFont = "text_p";
+%>
+  </logic:notEqual>
+
+  <logic:equal name="cirMdl" property="jsFlg" value="<%= jusin %>">
+    <gsmsg:define id="jusinStr" msgkey="cmn.receive2" />
+<%
+  sojuStr = "[ " + jusinStr + " ]";
+%>
+  </logic:equal>
+  <logic:equal name="cirMdl" property="jsFlg" value="<%= sosin %>">
+    <gsmsg:define id="sosinStr" msgkey="cmn.sent2" />
+<%
+sojuStr = "[ " + sosinStr + " ]";
+%>
+  </logic:equal>
+
+  <tr>
+
+  <!-- チェックボックス -->
+  <td class="td_type1" align="center">
+    <html:multibox name="cir010Form" property="cir010delInfSid">
+       <bean:write name="cirMdl" property="cifSid" />-<bean:write name="cirMdl" property="jsFlg" />
+    </html:multibox>
+  </td>
+
+  <!-- タイトル -->
+  <td class="td_type1">
+      <logic:notEmpty name="cirMdl" property="labelName">
+        <span class="cirLabel"><bean:write name="cirMdl" property="labelName" /></span>
+    </logic:notEmpty>
+    <a href="javascript:void(0)" onClick="return gomiView('view', '<bean:write name="cirMdl" property="cifSid" />', '<bean:write name="cirMdl" property="jsFlg" />');"><span class="<%= String.valueOf(titleFont) %>"><%= String.valueOf(sojuStr) %>&nbsp;<bean:write name="cirMdl" property="cifTitle" /></span></a>
+  </td>
+
+  <!-- 日付 -->
+  <td class="td_type1" align="center"><span class="text_base2"><bean:write name="cirMdl" property="dspCifAdate" /></span></td>
+
+  <!-- 発信者 -->
+  <td class="td_type1">
+    <logic:equal name="cirMdl" property="cacJkbn" value="<%= String.valueOf(jp.groupsession.v2.cir.GSConstCircular.CAC_JKBN_NORMAL) %>">
+    <bean:define id="mukouserClass" value=""/>
+    <logic:equal name="cirMdl" property="usrUkoFlg" value="1"><bean:define id="mukouserClass" value="mukouser" /></logic:equal>
+
+    <span class="text_base2 <%=mukouserClass%>"><bean:write name="cirMdl" property="cacName" /></span>
+    </logic:equal>
+    <logic:notEqual name="cirMdl" property="cacJkbn" value="<%= String.valueOf(jp.groupsession.v2.cir.GSConstCircular.CAC_JKBN_NORMAL) %>">
+    <del><span class="text_base2"><bean:write name="cirMdl" property="cacName" /></span></del>
+    </logic:notEqual>
+  </td>
+  </tr>
+
+  </logic:iterate>
+  </logic:notEmpty>
+</table>
