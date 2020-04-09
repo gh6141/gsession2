@@ -269,6 +269,35 @@ public class Cir020Action extends AbstractCircularAction {
         paramMdl.setFormData(form);
         con.setAutoCommit(false);
 
+
+
+
+        //********************kakunin sitesimau
+        RequestModel reqMdl = getRequestModel(req);
+        //採番コントローラ
+        MlCountMtController cntCon=null;
+		try {
+			cntCon = getCountMtController(req);
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+        //アプリケーションルートパスの取得
+        String appRootPath = getAppRootPath();
+        paramMdl.setParam(form);
+        try {
+			biz.doUpdate(
+			        paramMdl, con, reqMdl,
+			        paramMdl.getCirViewAccount(),
+			        userSid, cntCon, tempDir, appRootPath);
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+        paramMdl.setFormData(form);
+
+        //++++++++++++++++;kokomade
+
         return __doDsp(map, form, req, res, con, true);
     }
 
